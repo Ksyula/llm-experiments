@@ -85,24 +85,10 @@ Now let's only limit the questions to `machine-learning-zoomcamp`.
 Return 3 results. What's the 3rd question returned by the search engine?
 
 * How do I debug a docker container?
-* How do I copy files from a different folder into docker container’s working directory?
+* **How do I copy files from a different folder into docker container’s working directory?**
 * How do Lambda container images work?
 * How can I annotate a graph?
 
-```
-[{'text': 'I wanted to understand how lambda container images work in depth and how lambda functions are initialized, for this reason, I found the following documentation\nhttps://docs.aws.amazon.com/lambda/latest/dg/images-create.html\nhttps://docs.aws.amazon.com/lambda/latest/dg/runtimes-api.html\nAdded by Alejandro aponte',
-  'section': '9. Serverless Deep Learning',
-  'question': 'How do Lambda container images work?',
-  'course': 'machine-learning-zoomcamp'},
- {'text': 'Tim from BentoML has prepared a dedicated video tutorial wrt this use case here:\nhttps://www.youtube.com/watch?v=7gI1UH31xb4&list=PL3MmuxUbc_hIhxl5Ji8t4O6lPAOpHaCLR&index=97\nKonrad Muehlberg',
-  'section': 'Miscellaneous',
-  'question': 'How to pass BentoML content / docker container to Amazon Lambda',
-  'course': 'machine-learning-zoomcamp'},
- {'text': 'Launch the container image in interactive mode and overriding the entrypoint, so that it starts a bash command.\ndocker run -it --entrypoint bash <image>\nIf the container is already running, execute a command in the specific container:\ndocker ps (find the container-id)\ndocker exec -it <container-id> bash\n(Marcos MJD)',
-  'section': '5. Deploying Machine Learning Models',
-  'question': 'How do I debug a docker container?',
-  'course': 'machine-learning-zoomcamp'}]
-  ```
 
 ## Q5. Building a prompt
 
@@ -134,8 +120,8 @@ CONTEXT:
 What's the length of the resulting prompt? (use the `len` function)
 
 * 962
-* 1462
-* **1962**
+* **1462**
+* 1962
 * 2462
 
 ## Q6. Tokens
@@ -159,8 +145,8 @@ Use the `encode` function. How many tokens does our prompt have?
 
 * 122
 * 222
-* 322
-* **422**
+* **322**
+* 422
 
 Note: to decode back a token into a word, you can use the `decode_single_token_bytes` function:
 
@@ -173,7 +159,7 @@ encoding.decode_single_token_bytes(63842)
 Let's send the prompt to OpenAI. What's the response?  
 
 ```
-Choice(finish_reason='stop', index=0, logprobs=None, message=ChatCompletionMessage(content="The provided context does not include specific instructions on how to execute a command in a running Docker container. However, based on general Docker knowledge, you can execute a command in a running Docker container using the following command:\n\n```sh\ndocker exec -it <container_id_or_name> <command>\n```\n\nFor example, if your Docker container ID is `abcd1234` and you want to execute the `bash` shell inside it, you would use:\n\n```sh\ndocker exec -it abcd1234 bash\n```\n\nReplace `<container_id_or_name>` with your container's ID or name and `<command>` with the command you wish to execute inside the container.", role='assistant', function_call=None, tool_calls=None))
+To execute a command in a running Docker container, you can use the following steps:\n\n1. First, identify the container ID of the running container by using the command:\n   ```\n   docker ps\n   ```\n   This will list all running containers and their IDs.\n\n2. Once you have the container ID, you can execute a command inside the specific container using the `docker exec` command. For example, to start a bash session, you can use:\n   ```\n   docker exec -it <container-id> bash\n   ```\n\nReplace `<container-id>` with the actual ID of the container you want to interact with.
 ```
 
 Note: you can replace OpenAI with Ollama. See module 2.

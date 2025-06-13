@@ -14,7 +14,7 @@ curl localhost:9200
 
 What's the `version.build_hash` value?
 
-**42f05b9372a9a4a470db3b52817899b99a76ee73**
+**dbcbbbd0bc4924cfeb28929dc05d82d662c527b7**
 
 
 ## Getting the data
@@ -65,22 +65,25 @@ Which function do you use for adding your data to elastic?
 
 Now let's search in our index. 
 
-We will execute a query "How do I execute a command in a running docker container?". 
+We will execute a query "How do execute a command on a Kubernetes pod?". 
 
 Use only `question` and `text` fields and give `question` a boost of 4, and use `"type": "best_fields"`.
 
 What's the score for the top ranking result?
 
-* 94.05
-* 84.05
-* **74.05**
-* 64.05
+* 84.50
+* 64.50
+* 44.50
+* 24.50
+**32.00**
 
 Look at the `_score` field.
 
 ## Q4. Filtering
 
-Now let's only limit the questions to `machine-learning-zoomcamp`.
+Now ask a different question: "How do copy a file to a Docker container?".
+
+This time we are only interested in questions from `machine-learning-zoomcamp`.
 
 Return 3 results. What's the 3rd question returned by the search engine?
 
@@ -102,7 +105,7 @@ A: {text}
 """.strip()
 ```
 
-Now use the context you just created along with the "How do I execute a command in a running docker container?" question 
+Now use the context you just created along with the "How do copy a file to a Docker container?" question 
 to construct a prompt using the template below:
 
 ```
@@ -119,10 +122,10 @@ CONTEXT:
 
 What's the length of the resulting prompt? (use the `len` function)
 
-* 962
-* **1462**
-* 1962
-* 2462
+* 946
+* **1446**
+* 1946
+* 2446
 
 ## Q6. Tokens
 
@@ -143,10 +146,10 @@ encoding = tiktoken.encoding_for_model("gpt-4o")
 
 Use the `encode` function. How many tokens does our prompt have?
 
-* 122
-* 222
-* **322**
-* 422
+* 120
+* 220
+* **320**
+* 420
 
 Note: to decode back a token into a word, you can use the `decode_single_token_bytes` function:
 
@@ -159,7 +162,7 @@ encoding.decode_single_token_bytes(63842)
 Let's send the prompt to OpenAI. What's the response?  
 
 ```
-To execute a command in a running Docker container, you can use the following steps:\n\n1. First, identify the container ID of the running container by using the command:\n   ```\n   docker ps\n   ```\n   This will list all running containers and their IDs.\n\n2. Once you have the container ID, you can execute a command inside the specific container using the `docker exec` command. For example, to start a bash session, you can use:\n   ```\n   docker exec -it <container-id> bash\n   ```\n\nReplace `<container-id>` with the actual ID of the container you want to interact with.
+You can copy files from your local machine into a Docker container using the `docker cp` command. Here's how to do it:\n\nTo copy a file or directory from your local machine into a running Docker container, you can use the `docker cp` command. The basic syntax is as follows:\n\n```\ndocker cp /path/to/local/file_or_directory container_id:/path/in/container\n```
 ```
 
 Note: you can replace OpenAI with Ollama. See module 2.
@@ -184,5 +187,5 @@ You can redo the calculations with the values you got in Q6 and Q7.
 
 ## Submit the results
 
-* Submit your results here: https://courses.datatalks.club/llm-zoomcamp-2024/homework/hw1
+* Submit your results here: https://courses.datatalks.club/llm-zoomcamp-2025/homework/hw1
 * It's possible that your answers won't match exactly. If it's the case, select the closest one.
